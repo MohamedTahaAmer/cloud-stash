@@ -69,7 +69,7 @@ export function FileBrowser({
 					query,
 					favorites: favoritesOnly,
 					deletedOnly,
-				}
+			  }
 			: "skip",
 	)
 	const isLoading = files === undefined

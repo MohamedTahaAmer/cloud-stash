@@ -30,7 +30,6 @@ export function FileCard({
 		pdf: <FileTextIcon />,
 		csv: <GanttChartIcon />,
 	} as Record<Doc<"files">["type"], ReactNode>
-
 	return (
 		<Card>
 			<CardHeader className="relative">
