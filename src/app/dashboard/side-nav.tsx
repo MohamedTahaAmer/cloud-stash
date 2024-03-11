@@ -36,7 +36,7 @@ function SideNavLink({
 
 export function SideNav() {
 	return (
-		<div className="w-40 flex flex-col bg-slate-100 rounded-lg relative h-[650px] -top-10 p-4">
+		<div className="w-40 flex flex-col bg-slate-100 rounded-lg  h-[650px]  p-4">
 			<SideNavLink
 				href="/dashboard/files"
 				Icon={<FileIcon />}
