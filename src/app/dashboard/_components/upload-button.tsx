@@ -59,7 +59,8 @@ export function UploadButton() {
 
 		const postUrl = await generateUploadUrl()
 
-		const fileType = values.file[0].type
+		let fileType = values.file[0].type
+		if (fileType.startsWith("image")) fileType = "image/*"
 
 		const result = await fetch(postUrl, {
 			method: "POST",
@@ -69,17 +70,18 @@ export function UploadButton() {
 		const { storageId } = await result.json()
 
 		const types = {
-			"image/png": "image",
+			"image/*": "image",
 			"application/pdf": "pdf",
 			"text/csv": "csv",
 		} as Record<string, Doc<"files">["type"]>
 
 		try {
+			let type = types[fileType]
 			await createFile({
 				name: values.title,
 				fileId: storageId,
 				orgId,
-				type: types[fileType],
+				type,
 			})
 
 			form.reset()
