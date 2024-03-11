@@ -1,48 +1,54 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import clsx from "clsx"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import { FileIcon, StarIcon, TrashIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-export function SideNav() {
+function SideNavLink({
+	href,
+	Icon,
+	label,
+}: {
+	href: string
+	Icon: React.ReactElement
+	label: string
+}): JSX.Element {
 	const pathname = usePathname()
 
 	return (
-		<div className="w-40 flex flex-col gap-4">
-			<Link href="/dashboard/files">
-				<Button
-					variant={"link"}
-					className={clsx("flex gap-2", {
-						"text-blue-500": pathname.includes("/dashboard/files"),
-					})}
-				>
-					<FileIcon /> All Files
-				</Button>
-			</Link>
+		<Link href={href}>
+			<div
+				className={cn(
+					buttonVariants({ variant: "link" }),
+					"flex gap-2 pl-0 justify-start",
+					{
+						"text-blue-500 underline": pathname.includes(href),
+					},
+				)}
+			>
+				{Icon} {label}
+			</div>
+		</Link>
+	)
+}
 
-			<Link href="/dashboard/favorites">
-				<Button
-					variant={"link"}
-					className={clsx("flex gap-2", {
-						"text-blue-500": pathname.includes("/dashboard/favorites"),
-					})}
-				>
-					<StarIcon /> Favorites
-				</Button>
-			</Link>
+export function SideNav() {
+	return (
+		<div className="w-40 flex flex-col bg-slate-100 rounded-lg relative h-[650px] -top-10 p-4">
+			<SideNavLink
+				href="/dashboard/files"
+				Icon={<FileIcon />}
+				label="All Files"
+			/>
 
-			<Link href="/dashboard/trash">
-				<Button
-					variant={"link"}
-					className={clsx("flex gap-2", {
-						"text-blue-500": pathname.includes("/dashboard/trash"),
-					})}
-				>
-					<TrashIcon /> Trash
-				</Button>
-			</Link>
+			<SideNavLink
+				href="/dashboard/favorites"
+				Icon={<StarIcon />}
+				label="Favorites"
+			/>
+			<SideNavLink href="/dashboard/trash" Icon={<TrashIcon />} label="Trash" />
 		</div>
 	)
 }
