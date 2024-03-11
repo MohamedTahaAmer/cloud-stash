@@ -33,11 +33,12 @@ http.route({
 					})
 					break
 				case "user.updated":
+					let name = result.data.first_name
+						? `${result.data.first_name} ${result.data.last_name ?? ""}`
+						: result.data.username ?? ""
 					await ctx.runMutation(internal.users.updateUser, {
 						tokenIdentifier: `https://${process.env.CLERK_HOSTNAME}|${result.data.id}`,
-						name: `${result.data.first_name ?? ""} ${
-							result.data.last_name ?? ""
-						}`,
+						name,
 						image: result.data.image_url,
 					})
 					break
