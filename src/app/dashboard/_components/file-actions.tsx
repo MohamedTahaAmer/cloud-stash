@@ -1,19 +1,3 @@
-import { Doc, Id } from "../../../../convex/_generated/dataModel"
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import {
-	FileIcon,
-	MoreVertical,
-	StarHalf,
-	StarIcon,
-	TrashIcon,
-	UndoIcon,
-} from "lucide-react"
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -24,11 +8,27 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { useState } from "react"
-import { useMutation, useQuery } from "convex/react"
-import { api } from "../../../../convex/_generated/api"
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { useToast } from "@/components/ui/use-toast"
 import { Protect } from "@clerk/nextjs"
+import { useMutation, useQuery } from "convex/react"
+import {
+	FileIcon,
+	MoreVertical,
+	StarIcon,
+	StarOff,
+	TrashIcon,
+	UndoIcon
+} from "lucide-react"
+import { useState } from "react"
+import { api } from "../../../../convex/_generated/api"
+import { Doc, Id } from "../../../../convex/_generated/dataModel"
 
 export function FileCardActions({
 	file,
@@ -100,11 +100,11 @@ export function FileCardActions({
 					>
 						{isFavorited ? (
 							<div className="flex gap-1 items-center">
-								<StarIcon className="w-4 h-4" /> Unfavorite
+								<StarOff className="w-4 h-4" /> Unfavorite
 							</div>
 						) : (
 							<div className="flex gap-1 items-center">
-								<StarHalf className="w-4 h-4" /> Favorite
+								<StarIcon className="w-4 h-4" /> Favorite
 							</div>
 						)}
 					</DropdownMenuItem>
