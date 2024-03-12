@@ -15,7 +15,7 @@ export function Header() {
 			<div className="items-center container mx-auto justify-between flex">
 				<Link
 					href="/home"
-					className="flex gap-2 items-center text-xl text-black"
+					className="flex font-bold gap-2 items-center text-2xl text-black"
 				>
 					<Image
 						src="/logo.png"
