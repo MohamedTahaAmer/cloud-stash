@@ -5,8 +5,8 @@ import Link from "next/link"
 const LandingPage = async () => {
 	let user = await currentUser()
 	return (
-		<div className="bg-white">
-			<div className="relative isolate px-6 pb-4 pt-14 lg:px-8 overflow-hidden">
+		<div className="bg-white flex-1 overflow-hidden">
+			<div className="relative h-full isolate px-6 pb-4 pt-14 lg:px-8 ">
 				<div
 					className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
 					aria-hidden="true"

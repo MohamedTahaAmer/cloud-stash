@@ -23,10 +23,14 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<ConvexClientProvider>
-					<Toaster />
-					<Header />
-					{children}
-					<Footer />
+					<div className="flex min-h-screen flex-col justify-between">
+						<div className="flex-1 flex flex-col">
+							<Toaster />
+							<Header />
+							{children}
+						</div>
+						<Footer />
+					</div>
 				</ConvexClientProvider>
 			</body>
 		</html>
